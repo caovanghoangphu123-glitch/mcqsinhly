@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bộ MCQ Sinh Lý - Ôn thi hiệu quả cùng Azota</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6', // Teal 500
+                            600: '#0d9488',
+                            900: '#134e4a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+        
+        /* Hide scrollbar for testimonial slider but keep functionality */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Simple fade-in animation classes */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 selection:bg-brand-500 selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="leaf" class="text-brand-500"></i>
+                    <span class="font-bold text-xl tracking-tight text-brand-900">MCQ Sinh Lý</span>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#ve-chung-toi" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition">Đánh giá</a>
+                    <a href="#hoc-thu" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition">Học thử</a>
+                    <a href="#quy-trinh" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition">Cách dùng</a>
+                    <a href="#bang-gia" class="text-sm font-medium text-brand-600 font-semibold transition">Đăng ký</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 focus:outline-none">
+                        <i data-lucide="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-lg">
+                <a href="#ve-chung-toi" class="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-brand-50 rounded-md">Đánh giá</a>
+                <a href="#hoc-thu" class="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-brand-50 rounded-md">Học thử</a>
+                <a href="#quy-trinh" class="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-brand-50 rounded-md">Cách dùng</a>
+                <a href="#bang-gia" class="block px-3 py-2 text-base font-medium text-brand-600 hover:bg-brand-50 rounded-md">Đăng ký</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-28 pb-16 md:pt-36 md:pb-24 px-4 overflow-hidden">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+            <div class="w-full md:w-1/2 flex flex-col items-start fade-in-up">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 text-brand-600 text-sm font-medium mb-6">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+                    </span>
+                    Cập nhật mới nhất
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight text-gray-900 mb-6">
+                    Hệ thống hóa kiến thức,<br/> 
+                    <span class="text-brand-500 text-3xl md:text-4xl">Rèn phản xạ phòng thi Sinh lý</span>
+                </h1>
+                <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                    Hơn 5.000 câu hỏi được chọn lọc. Đây <strong class="text-gray-800">không phải là "tủ đề"</strong> để học thuộc lòng. Đây là công cụ giúp bạn tự kiểm tra lỗ hổng kiến thức và làm quen áp lực thời gian sau khi đã ôn kỹ giáo trình.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                    <a href="#bang-gia" class="px-8 py-3.5 rounded-xl bg-brand-500 text-white font-semibold hover:bg-brand-600 transition shadow-lg shadow-brand-500/30 text-center flex items-center justify-center gap-2">
+                        Đăng ký ngay <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                    <a href="#hoc-thu" class="px-8 py-3.5 rounded-xl bg-white border border-gray-200 text-gray-700 font-medium hover:bg-gray-50 transition text-center flex items-center justify-center gap-2">
+                        Làm thử miễn phí <i data-lucide="gift" class="w-4 h-4 text-brand-500"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="w-full md:w-1/2 relative fade-in-up" style="transition-delay: 0.2s;">
+                <!-- Decorative background blob -->
+                <div class="absolute inset-0 bg-brand-100 rounded-[40px] transform rotate-3 scale-105 opacity-50 z-0"></div>
+                <!-- Main Image Mockup -->
+                <div class="relative z-10 bg-white p-2 rounded-3xl shadow-2xl border border-gray-100">
+                    <div class="bg-gray-100 rounded-2xl aspect-video flex items-center justify-center overflow-hidden relative">
+                        <div class="absolute top-0 w-full h-8 bg-gray-200 flex items-center px-4 gap-2">
+                            <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                        </div>
+                        <!-- Placeholder for Azota Screenshot -->
+                        <div class="mt-8 text-center px-4">
+                            <i data-lucide="monitor-check" class="w-16 h-16 text-gray-400 mx-auto mb-4"></i>
+                            <p class="text-sm text-gray-500 font-medium">[Hình ảnh minh họa giao diện làm bài trên Azota]</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Floating stat badge -->
+                <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-4 z-20">
+                    <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                        <i data-lucide="check-circle-2"></i>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-bold text-gray-900">5.000+</p>
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Câu hỏi ôn tập</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section (From Survey) -->
+    <section id="ve-chung-toi" class="py-16 bg-white border-y border-gray-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12 fade-in-up">
+                <h2 class="text-sm font-bold text-brand-500 uppercase tracking-widest mb-2">Góc Nhìn Thực Tế</h2>
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-900">Khảo sát từ các bạn khóa trước</h3>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Kết quả được tổng hợp từ biểu mẫu đánh giá ẩn danh của các bạn sinh viên đã trải nghiệm bộ tài liệu.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Stat 1 -->
+                <div class="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100 hover:border-brand-200 transition fade-in-up" style="transition-delay: 0.1s;">
+                    <div class="w-14 h-14 mx-auto bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="trending-up" class="w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-3xl font-bold text-gray-900 mb-2">Điểm A, B</h4>
+                    <p class="text-sm text-gray-600">Mức điểm phổ biến được ghi nhận sau quá trình ôn tập nghiêm túc.</p>
+                </div>
+                <!-- Stat 2 -->
+                <div class="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100 hover:border-brand-200 transition fade-in-up" style="transition-delay: 0.2s;">
+                    <div class="w-14 h-14 mx-auto bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="target" class="w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-3xl font-bold text-gray-900 mb-2">70 - 85%</h4>
+                    <p class="text-sm text-gray-600">Độ bao phủ các mảng kiến thức trọng tâm (Mức độ 4/5).</p>
+                </div>
+                <!-- Stat 3 -->
+                <div class="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100 hover:border-brand-200 transition fade-in-up" style="transition-delay: 0.3s;">
+                    <div class="w-14 h-14 mx-auto bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="smile" class="w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-3xl font-bold text-gray-900 mb-2">+ 80%</h4>
+                    <p class="text-sm text-gray-600">Mức gia tăng sự tự tin khi bước vào phòng thi nhờ rèn phản xạ.</p>
+                </div>
+                <!-- Stat 4 -->
+                <div class="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100 hover:border-brand-200 transition fade-in-up" style="transition-delay: 0.4s;">
+                    <div class="w-14 h-14 mx-auto bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="heart" class="w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-3xl font-bold text-gray-900 mb-2">9/10</h4>
+                    <p class="text-sm text-gray-600">Điểm đánh giá mức độ sẵn sàng giới thiệu cho bạn bè khóa dưới.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials (From Survey) -->
+    <section class="py-16 bg-brand-50 overflow-hidden relative">
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Các bạn nói gì về bộ tài liệu?</h3>
+            
+            <!-- Horizontal scroll container -->
+            <div class="flex overflow-x-auto hide-scrollbar gap-6 pb-8 snap-x snap-mandatory px-4 md:px-0">
+                
+                <!-- Review 1 -->
+                <div class="min-w-[85vw] md:min-w-[350px] flex-none snap-center bg-white p-6 rounded-2xl shadow-sm border border-brand-100 relative">
+                    <i data-lucide="quote" class="absolute top-6 right-6 text-brand-100 w-10 h-10"></i>
+                    <div class="flex gap-1 text-yellow-400 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-gray-700 italic mb-4 leading-relaxed">"Giúp hệ thống hóa và cô đọng kiến thức nhanh hơn việc chỉ đọc sách lý thuyết thuần túy. Tiết kiệm thời gian tự bóc tách ý chính."</p>
+                    <div class="mt-auto pt-4 border-t border-gray-50 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 font-bold text-sm">Y</div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-900">Sinh viên Khóa 50</p>
+                            <p class="text-xs text-gray-500">Đánh giá 10/10</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="min-w-[85vw] md:min-w-[350px] flex-none snap-center bg-white p-6 rounded-2xl shadow-sm border border-brand-100 relative">
+                    <i data-lucide="quote" class="absolute top-6 right-6 text-brand-100 w-10 h-10"></i>
+                    <div class="flex gap-1 text-yellow-400 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-gray-700 italic mb-4 leading-relaxed">"Nhận diện được các bẫy lý thuyết dễ sai mà nếu chỉ đọc sách thông thường sẽ rất dễ bỏ qua. Rèn luyện phản xạ làm bài trắc nghiệm dưới áp lực thời gian."</p>
+                    <div class="mt-auto pt-4 border-t border-gray-50 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm">H</div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-900">Sinh viên YH2</p>
+                            <p class="text-xs text-gray-500">Mục tiêu Điểm A</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="min-w-[85vw] md:min-w-[350px] flex-none snap-center bg-white p-6 rounded-2xl shadow-sm border border-brand-100 relative">
+                    <i data-lucide="quote" class="absolute top-6 right-6 text-brand-100 w-10 h-10"></i>
+                    <div class="flex gap-1 text-yellow-400 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star-half" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-gray-700 italic mb-4 leading-relaxed">"Độ tương đồng khá cao (Lối tư duy phân tích lâm sàng và cơ chế tương tự nhau, giúp làm bài rất trôi chảy). Tóm gọn lại là: Thuận tiện, bám sát, logic."</p>
+                    <div class="mt-auto pt-4 border-t border-gray-50 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold text-sm">A</div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-900">Sinh viên RHM</p>
+                            <p class="text-xs text-gray-500">Khảo sát ẩn danh</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Indicator for mobile swipe -->
+            <div class="text-center mt-2 md:hidden text-gray-400 text-sm flex items-center justify-center gap-2">
+                <i data-lucide="arrow-left-right" class="w-4 h-4"></i> Vuốt để xem thêm
+            </div>
+        </div>
+    </section>
+
+    <!-- Free Trial Section -->
+    <section id="hoc-thu" class="py-16 md:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-12 fade-in-up">
+                <div class="w-16 h-16 bg-rose-100 text-rose-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="gift" class="w-8 h-8"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Quà tặng: Trải nghiệm học thử</h2>
+                <p class="text-gray-600">Kiểm tra xem phương pháp học qua MCQ trên Azota có phù hợp với bạn không trước khi quyết định đăng ký nhé.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6 fade-in-up" style="transition-delay: 0.2s;">
+                <!-- Trial Card 1 -->
+                <div class="border-2 border-dashed border-gray-200 rounded-2xl p-6 hover:border-brand-300 hover:bg-brand-50/30 transition group">
+                    <h3 class="font-bold text-lg text-gray-900 mb-2 flex items-center gap-2">
+                        <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded font-mono">Phần 1</span> Sinh Lý 1
+                    </h3>
+                    <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500 mt-0.5"></i> Đại cương & Nhập môn sinh lý</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500 mt-0.5"></i> Sinh lý thân nhiệt</li>
+                    </ul>
+                    <a href="#" class="block w-full py-2.5 text-center bg-gray-900 text-white rounded-lg font-medium group-hover:bg-brand-600 transition">
+                        Làm test SL1 ngay
+                    </a>
+                </div>
+                
+                <!-- Trial Card 2 -->
+                <div class="border-2 border-dashed border-gray-200 rounded-2xl p-6 hover:border-brand-300 hover:bg-brand-50/30 transition group">
+                    <h3 class="font-bold text-lg text-gray-900 mb-2 flex items-center gap-2">
+                        <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded font-mono">Phần 2</span> Sinh Lý 2
+                    </h3>
+                    <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500 mt-0.5"></i> Sinh lý hồng cầu, nhóm máu</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500 mt-0.5"></i> Sinh lý tim</li>
+                    </ul>
+                    <a href="#" class="block w-full py-2.5 text-center bg-gray-900 text-white rounded-lg font-medium group-hover:bg-brand-600 transition">
+                        Làm test SL2 ngay
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section id="quy-trinh" class="py-16 md:py-24 bg-gray-50 border-y border-gray-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">4 Bước tiếp cận & Học tập trên Azota</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Chỉ mất vài phút để thiết lập, sau đó bạn có thể chủ động ôn luyện bất cứ lúc nào, theo dõi tiến độ một cách khoa học.</p>
+            </div>
+
+            <div class="relative">
+                <!-- Desktop Timeline Line -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-200 -translate-y-1/2 z-0"></div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+                    
+                    <!-- Step 1 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 relative pt-12 fade-in-up" style="transition-delay: 0.1s;">
+                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-brand-500 text-white font-bold text-xl flex items-center justify-center shadow-lg border-4 border-gray-50">1</div>
+                        <h3 class="font-bold text-lg text-center mb-3">Tạo tài khoản</h3>
+                        <p class="text-sm text-gray-600 text-center">Đăng nhập nhanh qua nút Google. Ở mục vai trò, nhớ chọn <strong class="text-brand-600">"Tôi là học sinh"</strong> nhé.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 relative pt-12 fade-in-up" style="transition-delay: 0.2s;">
+                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-brand-500 text-white font-bold text-xl flex items-center justify-center shadow-lg border-4 border-gray-50">2</div>
+                        <h3 class="font-bold text-lg text-center mb-3">Lấy thông tin</h3>
+                        <p class="text-sm text-gray-600 text-center">Vào <em>Tài khoản > Chung</em> trên Azota, copy chính xác <strong>Họ và Tên</strong> cùng <strong>Email</strong> của bạn.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 relative pt-12 fade-in-up" style="transition-delay: 0.3s;">
+                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-brand-500 text-white font-bold text-xl flex items-center justify-center shadow-lg border-4 border-gray-50">3</div>
+                        <h3 class="font-bold text-lg text-center mb-3">Điền form đăng ký</h3>
+                        <p class="text-sm text-gray-600 text-center">Dán thông tin vừa copy vào Form bên dưới và hoàn tất phí đăng ký. Mình sẽ duyệt quyền truy cập.</p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 relative pt-12 fade-in-up" style="transition-delay: 0.4s;">
+                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-brand-500 text-white font-bold text-xl flex items-center justify-center shadow-lg border-4 border-gray-50">4</div>
+                        <h3 class="font-bold text-lg text-center mb-3">Bắt đầu ôn luyện</h3>
+                        <p class="text-sm text-gray-600 text-center">Vào mục <strong class="text-brand-600">"Khóa học"</strong> để luyện bài nhỏ. Tài liệu PDF bổ sung nằm ở mục <strong class="text-brand-600">"Bảng tin"</strong>.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="bang-gia" class="py-16 md:py-24 bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="text-center mb-12 fade-in-up">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Chi phí đăng ký hỗ trợ</h2>
+                <p class="text-gray-600">Mức phí nhỏ bé để ủng hộ công sức duy trì hệ thống và cập nhật nội dung.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <!-- Package 1 -->
+                <div class="border border-gray-200 rounded-3xl p-8 hover:shadow-xl transition flex flex-col fade-in-up" style="transition-delay: 0.1s;">
+                    <h3 class="text-lg font-medium text-gray-500 mb-2">Gói lẻ</h3>
+                    <p class="text-3xl font-bold text-gray-900 mb-6">Sinh Lý 1</p>
+                    <div class="text-4xl font-extrabold text-brand-600 mb-2">20k<span class="text-sm text-gray-500 font-normal"> /tài khoản</span></div>
+                    <ul class="space-y-3 mb-8 flex-1 mt-6">
+                        <li class="flex gap-2 text-gray-600"><i data-lucide="check-circle" class="w-5 h-5 text-brand-500 shrink-0"></i> Toàn bộ MCQ Sinh lý 1</li>
+                        <li class="flex gap-2 text-gray-600"><i data-lucide="check-circle" class="w-5 h-5 text-brand-500 shrink-0"></i> Tài liệu tham khảo PDF</li>
+                    </ul>
+                    <a href="https://forms.gle/CkGhVWK2iTB4mHuF9" target="_blank" class="w-full py-3 px-4 bg-brand-50 text-brand-600 font-semibold rounded-xl text-center hover:bg-brand-100 transition">Đăng ký ngay</a>
+                </div>
+
+                <!-- Combo Package (Highlighted) -->
+                <div class="border-2 border-brand-500 rounded-3xl p-8 shadow-2xl relative flex flex-col transform md:-translate-y-4 bg-white fade-in-up" style="transition-delay: 0.2s;">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-500 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wide flex items-center gap-1 shadow-md">
+                        <i data-lucide="flame" class="w-4 h-4"></i> ĐƯỢC CHỌN NHIỀU NHẤT
+                    </div>
+                    <h3 class="text-lg font-medium text-brand-500 mb-2 mt-2">Gói Tiết Kiệm</h3>
+                    <p class="text-3xl font-bold text-gray-900 mb-6">COMBO SL1 + 2</p>
+                    <div class="text-5xl font-extrabold text-gray-900 mb-2">30k<span class="text-sm text-gray-500 font-normal"> /trọn bộ</span></div>
+                    <p class="text-sm text-brand-600 font-medium mb-6">Hạn sử dụng kéo dài 2 học kỳ</p>
+                    <ul class="space-y-3 mb-8 flex-1">
+                        <li class="flex gap-2 text-gray-900 font-medium"><i data-lucide="check-circle" class="w-5 h-5 text-brand-500 shrink-0"></i> Trọn bộ MCQ Sinh lý 1 & 2</li>
+                        <li class="flex gap-2 text-gray-600"><i data-lucide="check-circle" class="w-5 h-5 text-brand-500 shrink-0"></i> Tài liệu tham khảo 2 phần</li>
+                        <li class="flex gap-2 text-gray-600"><i data-lucide="check-circle" class="w-5 h-5 text-brand-500 shrink-0"></i> Ôn tập Thực tập</li>
+                        <li class="flex gap-2 text-gray-600"><i data-lucide="check-circle" class="w-5 h-5 text-brand-500 shrink-0"></i> Đề thi Thực tập sưu tầm</li>
+                    </ul>
+                    <a href="https://forms.gle/CkGhVWK2iTB4mHuF9" target="_blank" class="w-full py-4 px-4 bg-brand-500 text-white font-bold rounded-xl text-center hover:bg-brand-600 transition shadow-lg shadow-brand-500/30">Đăng ký Combo</a>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="border border-gray-200 rounded-3xl p-8 hover:shadow-xl transition flex flex-col fade-in-up" style="transition-delay: 0.3s;">
+                    <h3 class="text-lg font-medium text-gray-500 mb-2">Gói lẻ</h3>
+                    <p class="text-3xl font-bold text-gray-900 mb-6">Sinh Lý 2</p>
+                    <div class="text-4xl font-extrabold text-brand-600 mb-2">20k<span class="text-sm text-gray-500 font-normal"> /tài khoản</span></div>
+                    <ul class="space-y-3 mb-8 flex-1 mt-6">
+                        <li class="flex gap-2 text-gray-600"><i data-lucide="check-circle" class="w-5 h-5 text-brand-500 shrink-0"></i> Toàn bộ MCQ Sinh lý 2</li>
+                        <li class="flex gap-2 text-gray-600"><i data-lucide="check-circle" class="w-5 h-5 text-brand-500 shrink-0"></i> Ôn tập + Đề thi Thực tập</li>
+                    </ul>
+                    <a href="https://forms.gle/CkGhVWK2iTB4mHuF9" target="_blank" class="w-full py-3 px-4 bg-brand-50 text-brand-600 font-semibold rounded-xl text-center hover:bg-brand-100 transition">Đăng ký ngay</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Important Disclaimer (Lời ngỏ) -->
+    <section class="py-12 px-4 fade-in-up">
+        <div class="max-w-4xl mx-auto bg-amber-50 border-l-4 border-amber-400 rounded-r-2xl p-6 md:p-8 shadow-sm">
+            <h3 class="text-xl font-bold text-amber-800 mb-4 flex items-center gap-2">
+                <i data-lucide="info" class="w-6 h-6"></i> Vài lời ngỏ chân thành từ mình (Vui lòng đọc kỹ)
+            </h3>
+            <div class="space-y-4 text-amber-900/80 font-medium text-sm md:text-base leading-relaxed">
+                <p>
+                    📌 <strong>Về bộ đề:</strong> Các câu hỏi trong MCQ này <strong>sẽ không giống 100%</strong> đề thi thật về từ ngữ hay trình tự. Xin các bạn đừng học vẹt đáp án. Hãy dùng nó để rèn tư duy, làm quen giao diện và tìm ra phần kiến thức mình còn hổng. Đây là tài liệu tham khảo, có thể vẫn còn sai sót nhỏ, hãy luôn lấy Giáo trình làm gốc nhé.
+                </p>
+                <p>
+                    📌 <strong>Về thời gian hỗ trợ:</strong> Hiện dự án này chỉ do một mình mình <em>(Cao Văng Hoàng Phúc)</em> duy trì. Việc đi học và trực viện khá bận nên mình <strong>không thể cam kết hỗ trợ liên tục 24/7</strong>. Mình thường sẽ tổng hợp và duyệt quyền truy cập vào các buổi tối. Mong các bạn thông cảm nếu phải chờ đợi một chút.
+                </p>
+                <p>
+                    📌 <strong>Về hệ thống Azota:</strong> Do chưa đủ kinh phí duy trì VIP quanh năm, web thỉnh thoảng sẽ có quảng cáo hoặc tải chậm lúc cao điểm (bạn chịu khó F5 nhé). Nhưng các bạn yên tâm, mình <strong>chắc chắn sẽ đăng ký gói VIP vào tháng cuối cùng trước kỳ thi</strong> để mọi người ôn luyện mượt mà nhất.
+                </p>
+            </div>
+            <p class="mt-6 font-handwriting text-amber-800 text-lg italic text-right font-semibold">
+                Chúc các bạn học tốt và đạt điểm cao! <br/> - Hoàng Phúc -
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-8">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 border-b border-gray-800 pb-8 mb-8">
+                <div class="flex items-center gap-2 text-xl font-bold">
+                    <i data-lucide="leaf" class="text-brand-500"></i>
+                    <span>MCQ Sinh Lý</span>
+                </div>
+                <div class="flex gap-4">
+                    <!-- Nút Share (Minh họa) -->
+                    <button class="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg text-sm font-medium transition flex items-center gap-2">
+                        <i data-lucide="share-2" class="w-4 h-4"></i> Chia sẻ
+                    </button>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm gap-4">
+                <p>&copy; 2026 Xây dựng và quản lý bởi Cao Văng Hoàng Phúc.</p>
+                <div class="flex items-center gap-6">
+                    <span class="flex items-center gap-2">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i> Zalo: 0931005866
+                    </span>
+                    <span>Liên hệ Fb: Hoangphucc</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on click link
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Simple Intersection Observer for Fade-in Animation
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Ngừng theo dõi sau khi đã hiện
+                    }
+                });
+            }, observerOptions);
+
+            const animatedElements = document.querySelectorAll('.fade-in-up');
+            animatedElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
